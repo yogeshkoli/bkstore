@@ -40,7 +40,7 @@ namespace BookStoreRazor.Pages.Categories
             {
                 await _storeContext.Category.AddAsync(Category);
                 await _storeContext.SaveChangesAsync();
-
+                TempData["success"] = "Category Created successfully!";
                 return RedirectToPage("Index");
             }
 

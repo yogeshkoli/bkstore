@@ -32,6 +32,7 @@ namespace BookStoreRazor.Pages.Categories
             {
                 _storeContext.Category.Remove(category);
                 await _storeContext.SaveChangesAsync();
+                TempData["success"] = "Category deleted successfully!";
                 return RedirectToPage("Index");
             }
             return Page();

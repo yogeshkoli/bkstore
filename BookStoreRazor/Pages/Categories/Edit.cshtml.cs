@@ -41,7 +41,7 @@ namespace BookStoreRazor.Pages.Categories
             {
                 _storeContext.Category.Update(Category);
                 await _storeContext.SaveChangesAsync();
-
+                TempData["success"] = "Category updated successfully!";
                 return RedirectToPage("Index");
             }
 

@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-// add razor run time Compilation 
+// configure razor run time Compilation 
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 // Configure DBContext 

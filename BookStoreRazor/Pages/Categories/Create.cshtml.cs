@@ -33,7 +33,7 @@ namespace BookStoreRazor.Pages.Categories
 
             if(Category.Name == Category.DisplayOrder.ToString())
             {
-                ModelState.AddModelError(string.Empty, "The DisplayOrder cannot exactly match the Name.");
+                ModelState.AddModelError("Category.Name", "The Display Order cannot exactly match the Name.");
             }
 
             if (ModelState.IsValid)

@@ -10,10 +10,10 @@ using Microsoft.Extensions.Logging;
 
 namespace BookStoreRazor.Pages.Categories
 {
+    [BindProperties]
     public class Create : PageModel
     {
         private readonly ILogger<Create> _logger;
-        [BindProperty]
         public Category Category { get; set; }
 
         private readonly StoreContext _storeContext;

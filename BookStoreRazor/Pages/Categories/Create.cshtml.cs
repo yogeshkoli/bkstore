@@ -13,6 +13,7 @@ namespace BookStoreRazor.Pages.Categories
     public class Create : PageModel
     {
         private readonly ILogger<Create> _logger;
+        [BindProperty]
         public Category Category { get; set; }
 
         private readonly StoreContext _storeContext;
@@ -27,9 +28,9 @@ namespace BookStoreRazor.Pages.Categories
         {
         }
 
-        public async Task<IActionResult> OnPost(Category category)
+        public async Task<IActionResult> OnPost()
         {
-            await _storeContext.Category.AddAsync(category);
+            await _storeContext.Category.AddAsync(Category);
             await _storeContext.SaveChangesAsync();
 
             return RedirectToPage("Index");

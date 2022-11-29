@@ -30,6 +30,12 @@ namespace BookStoreRazor.Pages.Categories
 
         public async Task<IActionResult> OnPost()
         {
+
+            if(Category.Name == Category.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError(string.Empty, "The DisplayOrder cannot exactly match the Name.");
+            }
+
             if (ModelState.IsValid)
             {
                 await _storeContext.Category.AddAsync(Category);

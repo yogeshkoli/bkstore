@@ -1,25 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BookStoreRazor.Data;
 using BookStoreRazor.Entity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 
 namespace BookStoreRazor.Pages.Categories
 {
     [BindProperties]
-    public class Edit : PageModel
+    public class Delete : PageModel
     {
-        private readonly ILogger<Edit> _logger;
+        private readonly ILogger<Delete> _logger;
 
         private readonly StoreContext _storeContext;
 
         public Category Category { get; set; }
 
-        public Edit(ILogger<Edit> logger, StoreContext storeContext)
+        public Delete(ILogger<Delete> logger, StoreContext storeContext)
         {
             _logger = logger;
             _storeContext = storeContext;
@@ -32,19 +27,13 @@ namespace BookStoreRazor.Pages.Categories
 
         public async Task<IActionResult> OnPost()
         {
-            if (Category.Name == Category.DisplayOrder.ToString())
+            var category = _storeContext.Category.Find(Category.Id);
+            if (category != null)
             {
-                ModelState.AddModelError("Category.Name", "The Display Order cannot exactly match the Name.");
-            }
-
-            if (ModelState.IsValid)
-            {
-                _storeContext.Category.Update(Category);
+                _storeContext.Category.Remove(category);
                 await _storeContext.SaveChangesAsync();
-
                 return RedirectToPage("Index");
             }
-
             return Page();
         }
     }

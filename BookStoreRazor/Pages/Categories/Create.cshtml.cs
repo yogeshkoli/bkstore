@@ -30,10 +30,16 @@ namespace BookStoreRazor.Pages.Categories
 
         public async Task<IActionResult> OnPost()
         {
-            await _storeContext.Category.AddAsync(Category);
-            await _storeContext.SaveChangesAsync();
+            if (ModelState.IsValid)
+            {
+                await _storeContext.Category.AddAsync(Category);
+                await _storeContext.SaveChangesAsync();
 
-            return RedirectToPage("Index");
+                return RedirectToPage("Index");
+            }
+
+            return Page();
+
         }
     }
 }

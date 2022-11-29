@@ -13,11 +13,13 @@
         <div class="mb-3">
             <label asp-for="Category.Name"></label>
             <input asp-for="@Model.Category.Name" class="form-control" type="text" />
+            <span asp-validation-for="Category.Name" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
             <label asp-for="Category.DisplayOrder"></label>
             <input asp-for="@Model.Category.DisplayOrder" class="form-control" type="text" />
+            <span asp-validation-for="Category.DisplayOrder" class="text-danger"></span>
         </div>
 
         <button style="width: 150px;" type="submit" class="btn btn-primary">Submit</button>
